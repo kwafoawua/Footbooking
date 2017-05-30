@@ -14,14 +14,14 @@ Luego de clonar el repositorio
 1. git checkout develop
 2. Cuando se hagan cambios: git add [file names]
 3. git commit
-⋅⋅1.Reglas para crear un commit
-⋅⋅2.Separate subject from body with a blank line
-⋅⋅3.Limit the subject line to 50 characters
-⋅⋅4.Capitalize the subject line
-⋅⋅5.Do not end the subject line with a period
-⋅⋅6.Use the imperative mood in the subject line
-⋅⋅7.Wrap the body at 72 characters
-⋅⋅8.Use the body to explain what and why vs. how
-⋅⋅9.https://chris.beams.io/posts/git-commit/ leer para más información.
+a. Reglas para crear un commit
+b. Separate subject from body with a blank line
+c. Limit the subject line to 50 characters
+d. Capitalize the subject line
+e. Do not end the subject line with a period
+f. Use the imperative mood in the subject line
+g. Wrap the body at 72 characters
+h. Use the body to explain what and why vs. how
+i. https://chris.beams.io/posts/git-commit/ leer para más información.
 4. Cuando quieran subir sus cambios al repositorio para que los demas lo vean git push origin develop
 
