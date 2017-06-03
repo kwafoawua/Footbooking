@@ -8,8 +8,10 @@ var Schema = mongoose.Schema;
      */
 
 var userSchema = new Schema({
-	username: {type: String, unique: true, required: true},
+	username: {type: String, unique: true, required: true, index: true},
 	password: {type: String, required: true},
+	email: {type: String, required: true},
+	creacion: {type:Date, default: Date.now, required: true},
 	rol: String
 
 });

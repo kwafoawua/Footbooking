@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 /**
      * Torneo Schema
      * @param {string} username - Required username.
@@ -11,10 +12,17 @@ var torneoSchema = new Schema({
 	nombre: {type: String, required: true},
 	fechaInicio: {type: Date, required: true},
 	fechaFin: {type: Date, required: true},
-	estado: {type: String, default: 'Creado', required: true},
+	estado: {type: String, default: 'Creado', required: true, enum: ['Creado', 'Vigente']},
 	tipoTorneo: {type: String, required: true},
-	complejo: { type: Schema.Types.ObjectId, ref: 'Complejo' },
-	//fase: [{}]
+	complejo: { type: ObjectId, ref: 'Complejo' },
+	fase: [{
+		cant:{type:Number, required: true},
+		nombre: {type: String, required: true},
+		fechaInicio: {type: Date, default: Date.now, required: true},
+		fechaFin: {type: Date, default:Date.now, required: true},
+		partido: {type: ObjectId, ref: 'Partido'}
+
+	}]
 
 });
 
