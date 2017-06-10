@@ -27,7 +27,14 @@ var clubSchema = new Schema({
         name: { type: String, required: true },
         description: String
     }],
-    user: { type: ObjectId, ref: 'User', required: true }
+    user: { type: ObjectId, ref: 'User', required: true },
+    socialMedia: {
+        facebookId: String,
+        twitterId: String,
+        instagramId: String,
+        snapchatId: String,
+        googleId: String
+    }
 });
 
 module.exports = mongoose.model('Club', clubSchema);

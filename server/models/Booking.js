@@ -4,27 +4,28 @@ var ObjectId = Schema.Types.ObjectId;
 
 /**
  * Booking Schema
- * @param {string} nombre - Nombre del complejo.
- * @param {string} domicilio - Array de domicilios del Complejo.
- * @param {string} telefono - Telefono del complejo.
- * @param {string} canchas - Array de Canchas del complejo.
- * @param {string} servicios - Serivicios que ofrece el Complejo.
- * @param {string} usuario - Usuario al cual pertenece el complejo.
+ * @param {Date} date - Día en que se hizo la reserva.
+ * @param {Field} field - Selected Field.
+ * @param {Date} bookingDate - Fecha para la cual se va a jugar.
+ * @param {String} status - Status of the booking.
+ * @param {String} payment - Payment.
+ * @param {Player} player - Player attributes plus user
+ * @param {Boolean}
  */
 
 var bookingSchema = new Schema({
     date: { type: Date, default: Date.now },
-    field: { type: ObjectId, ref: 'Field', required: true },
+    field: { 
+        description: String,
+        cantPlayers: { type: Number, required: true },
+        services: [{
+            name: { type: String},
+            description: String}]
+        },
     bookingDate: { type: Date, required: true },
-    status: { type: String, default: 'Creado', required: true, enum: ['Creado', 'Vigente'] }, //modificar con los estados verdaderos
+    status: { type: String, default: 'Esperando', required: true, enum: ['Declinado', 'Aceptado', 'Esperando'] }, //modificar con los estados verdaderos
     payment: Pago
-    player: {
-        name: { type: String, required: true },
-        lastName: { type: String, required: true },
-        dni: { type: Number, required: true },
-        phoneNumber: String,
-        birthDate: Date
-    },
+    player: { type: ObjectId, ref: 'Player'},
     regularBooking: { type: Boolean, required: true },
     endingDateRegularBooking: Date
 

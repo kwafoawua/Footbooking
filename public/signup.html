@@ -131,21 +131,24 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<div class="user-form">
-							<form action="#">
+							<form action="/newRegister" method="POST">
 								<div class="form-group">
-							    	<input type="text" class="form-control" required="required" placeholder="Full Name">
+							    	<input type="text" class="form-control" name="name" required="required" placeholder="Nombre">
 							    </div>
 							    <div class="form-group">
-							    	<input type="text" class="form-control" required="required" placeholder="User Name">
+							    	<input type="text" class="form-control" name="lastName" required="required" placeholder="Apellido">
 							    </div>
 							    <div class="form-group">
-							    	<input type="email" class="form-control" required="required" placeholder="Email">
+							    	<input type="text" class="form-control" name="username" required="required" placeholder="Nombre de Usuario">
 							    </div>
 							    <div class="form-group">
-							    	 <input type="password" class="form-control" required="required" placeholder="Password">
+							    	<input type="email" class="form-control" name="email" required="required" placeholder="Email">
 							    </div>
 							    <div class="form-group">
-							    	<input type="password" class="form-control" required="required" placeholder="Confirm Password">
+							    	 <input type="password" class="form-control" name="password" required="required" placeholder="Contraseña">
+							    </div>
+							    <div class="form-group">
+							    	<input type="password" class="form-control" required="required" placeholder="Confirmar Contraseña">
 							    </div>
 							    <button type="submit" class="btn btn-primary">Sign Up</button>
 							</form>
