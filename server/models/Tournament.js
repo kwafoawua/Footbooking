@@ -33,7 +33,9 @@ var tournamentSchema = new Schema({
         endDate: { type: Date, default: Date.now, required: true },
         game: [{ type: ObjectId, ref: 'Game' }]
 
-    }]
+    }],
+    cantTeams: Number,
+    rules: [{type: String}]
 
 });
 

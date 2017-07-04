@@ -14,8 +14,8 @@ var ObjectId = Schema.Types.ObjectId;
 
 var gameSchema = new Schema({
     date: {type:Date, required: true},
-    startingHour: Date,
-    endingHour: Date,
+    startingTime: Date,
+    endingTime: Date,
     team1: {teamName: String,
     	players: [{name: String}]
     },
