@@ -24,8 +24,15 @@ var bookingSchema = new Schema({
         },
     bookingDate: { type: Date, required: true },
     status: { type: String, default: 'Esperando', required: true, enum: ['Declinado', 'Aceptado', 'Esperando'] }, //modificar con los estados verdaderos
-    payment: Pago
-    player: { type: ObjectId, ref: 'Player'},
+    payment: {paidMethod: {type: String, required: true},
+        reference: {type: String, required: true}
+        },
+    player: {
+        name: {type: String, required: true},
+        lastName: {type: String, required: true},
+        userName: {type: String, required: true},
+
+    },
     regularBooking: { type: Boolean, required: true },
     endingDateRegularBooking: Date
 

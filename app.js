@@ -4,6 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var mongoose = require('mongoose');
+var port = process.env.PORT || 3000;
 
 //Require Schemas
 var User = require('./server/models/User');
@@ -18,7 +19,7 @@ mongoose.connect('mongodb://footbooking:footbooking01@ds119302.mlab.com:19302/fo
     if (error) {
         return console.log(error)
     }
-    app.listen(3000, function() {
+    app.listen(port, function() {
         console.log('Example app listening on port 3000!');
     });
 

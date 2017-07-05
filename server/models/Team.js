@@ -3,16 +3,13 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 /**
- * Player Schema
+ * Team Schema
  */
 
-var playerSchema = new Schema({
+var teamSchema = new Schema({
 	name: {type: String, required: true},
-	lastName: {type: String, required: true},
-	birthDate: Date,
-	phoneNumber: String,
-	user: {type: ObjectId, ref: 'User'}
-
+	players: [{type: String, required: true}],
+	points: Number,
 });
 
 module.exports = mongoose.model('Player', playerSchema);
