@@ -10,6 +10,9 @@ var port = process.env.PORT || 3000;
 var User = require('./server/models/User');
 var Player = require('./server/models/Player');
 
+//Require Controllers
+var PlayerController = require('./Controllers/Player')
+
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + '/public'));
@@ -56,3 +59,18 @@ mongoose.connect('mongodb://footbooking:footbooking01@ds119302.mlab.com:19302/fo
 
   	res.redirect('/');
 });*/
+
+
+//API routes
+var player = express.Router();
+
+player.route('/playerController')
+    .get(PlayerController.findAllPlayers)
+    .post(PlayerController.addPlayer);
+
+player.route('/playerController/:id')
+    .get(PlayerController.findById)
+    .put(PlayerController.updatePlayer)
+    .delete(PlayerController.deletePlayer);
+
+app.use('/api', player)
