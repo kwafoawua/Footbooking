@@ -29,7 +29,7 @@ mongoose.connect('mongodb://footbooking:footbooking01@ds119302.mlab.com:19302/fo
 //HANDLERS
 
 /*Registro*/
-app.post('/newRegister', (req, res) => {
+/*app.post('/newRegister', (req, res) => {
     console.log(req.body);
 
     var newUser = new User({
@@ -55,4 +55,4 @@ app.post('/newRegister', (req, res) => {
   	});
 
   	res.redirect('/');
-});
+});*/
