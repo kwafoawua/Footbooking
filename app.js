@@ -70,7 +70,7 @@ mongoose.connect(configDB.url, function(error) {
 
 
 //API routes
-var player = express.Router();
+/*var player = express.Router();
 
 player.route('/playerController')
     .get(PlayerController.findAllPlayers)
@@ -81,4 +81,4 @@ player.route('/playerController/:id')
     .put(PlayerController.updatePlayer)
     .delete(PlayerController.deletePlayer);
 
-app.use('/api', player)
+app.use('/api', player)*/
