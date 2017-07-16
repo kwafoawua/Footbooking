@@ -11,8 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" >
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/datepicker.css">
-    <link rel="stylesheet" href="css/animate.css">
+       <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -31,9 +30,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="js/bootstrap-datepicker.js"></script>
-    <!--ANGULAR-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
 
 
 
@@ -124,13 +120,12 @@
     </nav><!-- navbar -->
 </header><!-- header -->
 
-<body>
+<body ng-app="appFootBooking">
+<div class="ng-view"></div>
 
-<div>
 
-
-</div>
 </body>
+
 
 <footer id="footer">
     <div class="footer-top section">
@@ -212,12 +207,14 @@
 <!-- JS -->
 
 <script src="js/jquery.min.js"></script>
+<!--ANGULAR-->
+<script src="js/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/app.controller.js"></script>
+
 <script src="js/modernizr.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script src="js/gmaps.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/custom.js"></script>
-
 
 </html>
