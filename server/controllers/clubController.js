@@ -12,10 +12,8 @@ var User = mongoose.model('User');
  * Create a Club
  */
 
-exports.addClub = function(req, res) {
-    User.findOne({
-            'username': req.body.username
-        },
+module.exports.addClub = function(req, res) {
+    User.findOne({$or:[ {'username': req.body.username}, {'email': req.body.email}]},
         function(err, user) {
             if (user) {
                 res.json(null);
@@ -59,61 +57,69 @@ exports.addClub = function(req, res) {
 
         });
 };
-/*exports.addClub = function(req, res) {
-    var newUser = new User({
-        username: req.body.user.username,
-        password: req.body.user.password,
-        email: req.body.user.email,
-        rol: 'Club'
-    });
-
-    var newClub = new Club({
-        name: req.body.club.name,
-        address: req.body.club.address,
-        phoneNumber: req.body.club.phoneNumber,
-        fields: req.body.club.fields || null,
-        services: req.body.club.services || null,
-        user: req.body.club.userObjectId,
-        socialMedia: req.body.club.socialMedia || null
-    })
-
-
-    newClub.save(function(err) {
-        if (err) return console.log(err);
-
-        newUser.save(function(err) {
-            if (err) return console.log(err);
-            // thats it!
-        });
-        console.log('Se ha guardado');
-    });
-
-};*/
 
 /**
  * Show the current Club
  */
-exports.findById = function(req, res) {
+module.exports.findById = function(req, res) {
+    Club.findById(req.params.ClubId, function(err, clubs){
+        if(err)
+            return res.send(500. err.message);
+        console.log('GET /Club/' + req.params.id);
+        res.status(200).json(clubs);
+    });
+};
 
+
+/**
+* Show all Clubs
+*/
+module.exports.findAllClubs = function(req, res) {
+    Club.find(function(err, clubs) {
+        if(err) 
+            res.send(500, err.message);
+        console.log('GET /clubController');
+        res.status(200).json(clubs);
+    });
 };
 
 /**
  * Update a Club
  */
-exports.update = function(req, res) {
+module.exports.updateClub = function(req, res) {
+    Club.findById(req.params.ClubId, function (err, todo) {  
+    // Handle any possible database errors
+    if (err) {
+        res.status(500).send(err);
+    } else {
+        // Update each attribute with any possible attribute that may have been submitted in the body of the request
+        // If that attribute isn't in the request body, default back to whatever it was before.
+        todo.title = req.body.title || todo.title;
+        todo.description = req.body.description || todo.description;
+        todo.price = req.body.price || todo.price;
+        todo.completed = req.body.completed || todo.completed;
 
+        // Save the updated document back to the database
+        todo.save(function (err, todo) {
+            if (err) {
+                res.status(500).send(err)
+            }
+            res.send(todo);
+        });
+    }
+});
 };
 
 /**
  * Delete an Club
  */
-exports.delete = function(req, res) {
+module.exports.delete = function(req, res) {
 
 };
 
 /**
  * List of Club
  */
-exports.list = function(req, res) {
+module.exports.list = function(req, res) {
 
 };

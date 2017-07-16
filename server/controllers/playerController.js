@@ -55,12 +55,18 @@ exports.addPlayer = function(req, res){
             	});
 
             	player.save(function(error, player){
-            		if(error)
-            			return res.status(500).send(error.message);
+            		if(error) return res.status(500).send(error.message);
+            		newUser.save(function(err, user) {
+                        var token;
+                        token = user.generateJwt();
+                        res.status(200);
+                        res.json({
+                            "token": token
+                        });
             		res.status(200).jsonp(player);
-            	};
-
+            	});
             	console.log('Jugador guardado con exito');
+
 
             });
             }
