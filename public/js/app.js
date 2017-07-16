@@ -12,7 +12,7 @@ angular.module('appFootBooking',[])
                    {url: '/index',
                    views: {
                        'fbcontainer': {
-                           templateUrl: './index.html',
+                           templateUrl: './home.html',
                            controller: 'AppCtrl',
                            abstract: false
                        }
