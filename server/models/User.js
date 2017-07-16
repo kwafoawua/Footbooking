@@ -29,7 +29,7 @@ var userSchema = new Schema({
 
 });
 
-/*userSchema.path('email').validate(function (email) {
+userSchema.path('email').validate(function (email) {
   if (this.skipValidation()) return true;
   return email.length;
 }, 'El campo Email es requerido.');
@@ -78,6 +78,6 @@ userSchema.methods.generateJwt = function () {
         exp: parseInt(expiry.getTime() / 1000)}, secret
         );
 };
-*/
+
 
 module.exports = mongoose.model('User', userSchema);
