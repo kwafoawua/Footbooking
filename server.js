@@ -6,6 +6,17 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
 
+<<<<<<< HEAD:app.js
+=======
+
+
+
+
+//Require Schemas
+var User = require('./server/models/User');
+var Player = require('./server/models/Player');
+
+>>>>>>> 123837be63279e85382197f4761bfef0df16d9d7:server.js
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + '/public'));
