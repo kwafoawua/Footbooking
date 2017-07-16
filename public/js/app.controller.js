@@ -1,4 +1,4 @@
-angular.module('appFootbooking')
-    .controller('AppCtrl', function($scope) {
-
+angular.module('appFootBooking')
+    .controller('HomeController', function($scope) {
+    $scope.hola = 'hola mundo';
     });
