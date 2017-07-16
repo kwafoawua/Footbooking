@@ -6,10 +6,6 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
 
-//Require Schemas
-var User = require('./server/models/User');
-var Player = require('./server/models/Player');
-
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + '/public'));
@@ -24,7 +20,6 @@ mongoose.connect('mongodb://footbooking:footbooking01@ds119302.mlab.com:19302/fo
     });
 
 });
-
 
 //HANDLERS
 
