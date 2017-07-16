@@ -29,12 +29,12 @@ var userSchema = new Schema({
 
 });
 
-UserSchema.path('email').validate(function (email) {
+/*userSchema.path('email').validate(function (email) {
   if (this.skipValidation()) return true;
   return email.length;
 }, 'El campo Email es requerido.');
 
-UserSchema.path('email').validate(function (email, fn) {
+userSchema.path('email').validate(function (email, fn) {
   var User = mongoose.model('User');
   if (this.skipValidation()) fn(true);
 
@@ -46,12 +46,12 @@ UserSchema.path('email').validate(function (email, fn) {
   } else fn(true);
 }, 'El Email ya existe');
 
-UserSchema.path('username').validate(function (username) {
+userSchema.path('username').validate(function (username) {
   if (this.skipValidation()) return true;
   return username.length;
 }, 'El campo Nombre de Usuario es requerido.');
 
-UserSchema.path('hashed_password').validate(function (hashed_password) {
+userSchema.path('hashed_password').validate(function (hashed_password) {
   if (this.skipValidation()) return true;
   return hashed_password.length && this._password.length;
 }, 'La contraseña es requerida.');
@@ -78,6 +78,6 @@ userSchema.methods.generateJwt = function () {
         exp: parseInt(expiry.getTime() / 1000)}, secret
         );
 };
-
+*/
 
 module.exports = mongoose.model('User', userSchema);
