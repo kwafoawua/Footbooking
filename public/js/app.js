@@ -3,7 +3,7 @@
  */
 angular.module('appFootBooking',[])
 
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(["$stateProvider", "$urlRouterProvider",function($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/home');
 
@@ -19,10 +19,26 @@ angular.module('appFootBooking',[])
                     }
                 });
 
+        $stateProvider
+            .state('signup',
+                {url: '/index',
+                    views: {
+                        'fbcontainer': {
+                            templateUrl: './home.html',
+                            controller: 'signupController',
+                            abstract: false
+                        }
+                    }
+                });
 
 
+    }()])
 
-    });
+    .controller('signupController', function ($scope) {
+        $scope.master = "Hola, probando"//{Nombre: name, lastName: lastName, userName: userName, email: email, password: password}
+    }());
+
+
 
 
 
