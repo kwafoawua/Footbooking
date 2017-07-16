@@ -4,20 +4,24 @@
 angular.module('appFootBooking',[])
 
     .config(function($stateProvider, $urlRouterProvider) {
-         $stateProvider
-               .state('app', {
-                    url: '/index',
-                templateUrl: './index.html',
-                   abstract: false,
-                   controller: 'AppCtrl'
-            })
-             .state('');
 
-        $urlRouterProvider.otherwise('/index');
+        $urlRouterProvider.otherwise('/home');
+
+        $stateProvider
+            .state('home',
+                {url: '/index',
+                    views: {
+                        'fbcontainer': {
+                            templateUrl: './home.html',
+                            controller: 'AppCtrl',
+                            abstract: false
+                        }
+                    }
+                });
+
+
 
     });
-
-
 
 
 
