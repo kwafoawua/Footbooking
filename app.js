@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
 
-app.use('/', routesApi); //VER QUE ES ESTO
+app.use('/', routesApi);
 
 mongoose.connect(configDB.url, function(error) {
     // Check error in initial connection. There is no 2nd param to the callback.

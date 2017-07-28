@@ -30,3 +30,7 @@ module.exports.login = function(req, res) {
   })(req, res);
 
 };
+
+module.exports.getUserById = function (req, res) {
+  
+}

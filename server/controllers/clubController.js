@@ -23,13 +23,11 @@ module.exports.addClub = function(req, res) {
     y luego guardar el club o jugador y dentro de este guardar el usuario
     
     */
-    console.log(req.body);
     User.findOne({ $or: [{ 'username': req.body.username }, { 'email': req.body.email }] },
         function(err, user) {
             if (user) {
-                return res.json(err);
+                return res.json(null);
             } else {
-                console.log(req.body);
 
                 var newUser = new User({
                     username: req.body.username.toLowerCase(),
@@ -62,9 +60,7 @@ module.exports.addClub = function(req, res) {
                         }
                         var token;
                         token = newUser.generateJwt();
-                        res.status(200).json({
-                            "token": token
-                        });
+                        res.status(200).json({"token": token});
                     });
 
                     console.log('Se ha guardado el complejo');
