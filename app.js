@@ -16,12 +16,16 @@ var passport = require('passport');
 
 var configDB = require('./server/config/database');
 
+var routesApi = require('./server/routes/index');
+
 //Require Controllers
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
-//app.use('/api', routesApi); //VER QUE ES ESTO
+
+app.use('/', routesApi); //VER QUE ES ESTO
 
 mongoose.connect(configDB.url, function(error) {
     // Check error in initial connection. There is no 2nd param to the callback.

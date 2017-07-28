@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
+
 /**
  * Club Schema
  * @param {string} name - Club's name.
@@ -35,6 +36,15 @@ var clubSchema = new Schema({
         snapchatId: String,
         googleId: String
     }
+});
+
+clubSchema.pre('remove', function(next) {
+    // 'this' is the client being removed. Provide callbacks here if you want
+    // to be notified of the calls' result.
+    console.log('Se tiene que borrar el usuario');
+    this.model('User').remove({ user: this._id }, next);
+    //this.model('Field').remove({ fields: this._id });
+    console.log('Se supone que se borra ._.');
 });
 
 module.exports = mongoose.model('Club', clubSchema);

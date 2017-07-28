@@ -28,7 +28,7 @@ var userSchema = new Schema({
     rol: String
 
 });
-
+/*
 userSchema.path('email').validate(function (email) {
   if (this.skipValidation()) return true;
   return email.length;
@@ -51,11 +51,11 @@ userSchema.path('username').validate(function (username) {
   return username.length;
 }, 'El campo Nombre de Usuario es requerido.');
 
-userSchema.path('hashed_password').validate(function (hashed_password) {
+userSchema.path('hash').validate(function (hashed_password) {
   if (this.skipValidation()) return true;
   return hashed_password.length && this._password.length;
 }, 'La contraseña es requerida.');
-
+*/
 
 userSchema.methods.setPassword = function (password) {
     this.salt = crypto.randomBytes(16).toString('hex');

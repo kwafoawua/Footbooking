@@ -1,3 +1,4 @@
+var express = require('express');
 var player = express.Router();
 
 module.exports = function(app) {

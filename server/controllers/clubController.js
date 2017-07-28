@@ -5,53 +5,69 @@
  */
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var Club = mongoose.model('Club');
-var User = mongoose.model('User');
+var Club = require('../models/Club');
+var User = require('../models/User');
 
 /**
  * Create a Club
  */
 
 module.exports.addClub = function(req, res) {
-    User.findOne({$or:[ {'username': req.body.username}, {'email': req.body.email}]},
+        /*
+    Buscar si existe el usuario
+    Si existe return null y ver q mirda se hace en el frontend
+    no no existe Tomar los datos del jugador o club y los del usuario
+    crear un club o jugador
+    crear un usuario
+    referenciar el usuario al jugador o club
+    y luego guardar el club o jugador y dentro de este guardar el usuario
+    
+    */
+    console.log(req.body);
+    User.findOne({ $or: [{ 'username': req.body.username }, { 'email': req.body.email }] },
         function(err, user) {
             if (user) {
-                res.json(null);
-                return;
+                return res.json(err);
             } else {
+                console.log(req.body);
 
                 var newUser = new User({
                     username: req.body.username.toLowerCase(),
                     email: req.body.email,
-                    rol: 'Club'
+                    rol: 'Club',
                     provider: 'local'
                 });
 
                 newUser.setPassword(req.body.password);
 
                 var newClub = new Club({
-                    name: req.body.club.name,
-                    address: req.body.club.address,
-                    phoneNumber: req.body.club.phoneNumber,
-                    fields: req.body.club.fields || null,
-                    services: req.body.club.services || null,
+                    name: req.body.name,
+                    address: req.body.address,
+                    phoneNumber: req.body.phoneNumber,
+                    fields: req.body.fields || null,
+                    services: req.body.services || null,
                     user: newUser,
-                    socialMedia: req.body.club.socialMedia || null
+                    socialMedia: req.body.socialMedia || null
                 });
 
 
                 newClub.save(function(err) {
-                    if (err) return console.log(err);
-                    newUser.save(function(err, user) {
+                    if (err) {
+                        return res.status(500).send(err);
+
+                    }
+                    newUser.save(function(err) {
+                        if (err) {
+                            return res.status(500).send(err);
+                        }
                         var token;
-                        token = user.generateJwt();
-                        res.status(200);
-                        res.json({
+                        token = newUser.generateJwt();
+                        res.status(200).json({
                             "token": token
                         });
                     });
 
-                    console.log('Se ha guardado');
+                    console.log('Se ha guardado el complejo');
                 });
             }
 
@@ -62,23 +78,24 @@ module.exports.addClub = function(req, res) {
  * Show the current Club
  */
 module.exports.findById = function(req, res) {
-    Club.findById(req.params.ClubId, function(err, clubs){
-        if(err)
-            return res.send(500. err.message);
+    Club.findById(req.params.id, function(err, club) {
+        if (err)
+            return res.status(500).send(err);
         console.log('GET /Club/' + req.params.id);
-        res.status(200).json(clubs);
+        res.status(200).json(club);
     });
 };
 
 
 /**
-* Show all Clubs
-*/
+ * Show all Clubs
+ */
 module.exports.findAllClubs = function(req, res) {
     Club.find(function(err, clubs) {
-        if(err) 
-            res.send(500, err.message);
-        console.log('GET /clubController');
+            if (err) {
+               return res.status(500).send(err);
+            }
+        console.log('GET /clubController'); 
         res.status(200).json(clubs);
     });
 };
@@ -87,39 +104,45 @@ module.exports.findAllClubs = function(req, res) {
  * Update a Club
  */
 module.exports.updateClub = function(req, res) {
-    Club.findById(req.params.ClubId, function (err, todo) {  
-    // Handle any possible database errors
-    if (err) {
-        res.status(500).send(err);
-    } else {
-        // Update each attribute with any possible attribute that may have been submitted in the body of the request
-        // If that attribute isn't in the request body, default back to whatever it was before.
-        todo.title = req.body.title || todo.title;
-        todo.description = req.body.description || todo.description;
-        todo.price = req.body.price || todo.price;
-        todo.completed = req.body.completed || todo.completed;
+    Club.findById(req.params.id, function(err, club) {
+        // Handle any possible database errors
+        if (err) {
+            return res.status(500).send(err);
+        } else {
+            // Update each attribute with any possible attribute that may have been submitted in the body of the request
+            // If that attribute isn't in the request body, default back to whatever it was before.
+            club.name = req.body.name || club.name,
+                club.address = req.body.address || club.address,
+                club.phoneNumber = req.body.phoneNumber || club.phoneNumber,
+                club.fields = req.body.fields || club.fields,
+                club.services = req.body.services || club.services,
+                club.socialMedia = req.body.socialMedia || club.socialMedia
 
-        // Save the updated document back to the database
-        todo.save(function (err, todo) {
-            if (err) {
-                res.status(500).send(err)
-            }
-            res.send(todo);
-        });
-    }
-});
+            // Save the updated document back to the database
+            club.save(function(err, club) {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                res.status(200).json(club);
+            });
+        }
+    });
 };
 
 /**
  * Delete an Club
  */
-module.exports.delete = function(req, res) {
+module.exports.deleteClub = function(req, res) {
+    Club.findById(req.params.id, function(err, club) {
+        if (err) {
+           return res.status(500).send(err);
+        }
+        
+        club.remove(function(err) {
+            if (err) {return res.status(500).send(err);}
 
-};
-
-/**
- * List of Club
- */
-module.exports.list = function(req, res) {
-
+            console.log('Club successfully deleted!');
+            res.json('Club eliminado');
+        });
+    });
 };
