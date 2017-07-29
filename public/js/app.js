@@ -1,6 +1,6 @@
 angular.module('footBookingApp',['ui.router'])
 .config(function ($stateProvider, $urlRouterProvider) {
-	$stateProvider.otherwhise('/');
+	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
 	.state('home',
@@ -8,7 +8,33 @@ angular.module('footBookingApp',['ui.router'])
 		views: {
 			'content': {
 				templateUrl: 'templates/home.html',
-				abstract: false
-			}
+			}/*,
+			'header': {
+				templateUrl : 'templates/header.html'
+			},
+			'footer' : {
+				templateUrl : 'templates/footer.html'
+			}*/
+		}
+	})
+	.state('loginComplejo', 
+		{url: '/signinComplejo',
+		views: {
+			'content': {
+				templateUrl: 'templates/signin-complejo.html'}
 		}});
+})
+.directive('ngFootbookingheader', function() {
+  return {
+    restrict: 'E',
+    require: '^ngModel',
+    templateUrl: 'templates/header.html'
+  }
+})
+.directive('ngFootbookingfooter', function() {
+  return {
+    restrict: 'E',
+    require: '^ngModel',
+    templateUrl: 'templates/footer.html'
+  }
 });
