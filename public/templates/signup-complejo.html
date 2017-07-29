@@ -1,0 +1,38 @@
+<div ng-controller="">
+		<div class="ad-post-wrapper section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<div class="user-form">
+							<form name="registroComplejo">
+								<div>DATOS DEL COMPLEJO</div>
+								<div class="form-group">
+							    	<input type="text" class="form-control" name="name" required="required" placeholder="Nombre del complejo" ng-model="club.name">
+							    </div>
+							    <div class="form-group">
+							    	<input type="text" class="form-control" name="direccion" required="required" placeholder="Direccion">
+							    </div>
+							    <div class="form-group">
+							    	<input type="email" class="form-control" name="email" required="required" placeholder="Email" ng-model="club.email">
+							    </div>
+								<div class="form-group">
+									<input type="number" class="form-control" name="phone" required="required" placeholder="Telefono" ng-model="club.phone">
+								</div>
+							    <div>DATOS DEL USUARIO</div>
+								<div class="form-group">
+									<input type="text" class="form-control" name="username" required="required" placeholder="Nombre de Usuario" ng-model="club.username">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" required="required" placeholder="Contraseña" ng-model="club.password">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" required="required" placeholder="Confirmar Contraseña">
+								</div>
+							    <button type="submit" class="btn btn-primary">Sign Up</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- ad-post -->
+	</div>	<!-- page -->

@@ -17,12 +17,15 @@ angular.module('footBookingApp',['ui.router'])
 			}*/
 		}
 	})
+
 	.state('loginComplejo', 
 		{url: '/signinComplejo',
 		views: {
 			'content': {
 				templateUrl: 'templates/signin-complejo.html'}
-		}});
+		}})
+		.state('singupComplejo',{controler:'register.complejo.controller.js',url: '/singupComplejo',view:{'contect':{templateUrl:'templates/singup-complejos.html'}}})
+		;
 })
 .directive('ngFootbookingheader', function() {
   return {
