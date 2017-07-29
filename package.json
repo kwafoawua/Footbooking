@@ -4,6 +4,8 @@
   "description": "Proyecto Final 2017 - UTN FRC - Footbooking: Gestión de reservas de canchas y torneos.",
   "main": "index.js",
   "dependencies": {
+    "angular": "^1.6.5",
+    "angular-ui-router": "^1.0.3",
     "body-parser": "^1.17.2",
     "connect": "^3.6.2",
     "cookie-parser": "^1.4.3",
