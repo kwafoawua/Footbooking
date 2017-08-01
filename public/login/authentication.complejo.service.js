@@ -1,5 +1,5 @@
 angular.module('footBookingApp')
-.service('authSvc', function($http, $window){
+.service('authSvc', function($q, $http, $window){
 	this.saveToken = function (token) {
       $window.localStorage['complejo-token'] = token;
     };
@@ -11,4 +11,8 @@ angular.module('footBookingApp')
     this.logout = function() {
       $window.localStorage.removeItem('mean-token');
     };
+
+    this.getClub = function (user) {
+    	$http.get('http://localhost:3000/complejo');
+    }
 });
