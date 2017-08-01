@@ -21,7 +21,8 @@ angular.module('footBookingApp',['ui.router'])
 		{url: '/signinComplejo',
 		views: {
 			'content': {
-				templateUrl: 'templates/signin-complejo.html'}
+				templateUrl: 'templates/signin-complejo.html',
+				controller: LoginClubController}
 		}});
 })
 .directive('ngFootbookingheader', function() {
