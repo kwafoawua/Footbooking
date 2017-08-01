@@ -1,6 +1,6 @@
+'use strict';
 angular.module('footBookingApp', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('home', {
@@ -8,6 +8,7 @@ angular.module('footBookingApp', ['ui.router'])
                 views: {
                     'content': {
                         templateUrl: 'templates/home.html',
+                        controller: 'footBookingAppCtrl'
                     }
                 }
             })
@@ -17,11 +18,11 @@ angular.module('footBookingApp', ['ui.router'])
                 views: {
                     'content': {
                         templateUrl: 'templates/signin-complejo.html',
-                        controller: loginClubController
+                        controller: 'loginClubController'
                     }
                 }
             });
-        .state('singupComplejo', {
+        /*.state('singupComplejo', {
             url: '/singupComplejo',
             view: {
                 'content': {
@@ -29,7 +30,10 @@ angular.module('footBookingApp', ['ui.router'])
                     controller: 'registerClubController'
                 }                
             }
-        });
+        });*/
+    
+            $urlRouterProvider.otherwise('/');
+
     })
     .directive('ngFootbookingheader', function() {
         return {

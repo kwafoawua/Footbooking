@@ -15,14 +15,14 @@ var ObjectId = Schema.Types.ObjectId;
 
 var clubSchema = new Schema({
     name: { type: String, required: true, index: true },
-    address: [{
+    address: {
         street: { type: String, required: true },
         location: { type: [Number], required: true } //[Lat, Long]
-    }],
-    phoneNumber: [{
+    },
+    phoneNumber: {
         phone: String,
         whatsapp: String
-    }],
+    },
     fields: [{ type: ObjectId, ref: 'Cancha' }],
     services: [{
         name: { type: String, required: true },
