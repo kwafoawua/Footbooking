@@ -1,14 +1,14 @@
-		<div class="ad-post-wrapper section" ng-app="footBookingApp">
+		<div class="ad-post-wrapper section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<div class="user-form">
 							<form name="loginComplejo">
 							    <div class="form-group">
-							    	<input type="text" class="form-control" ng-model="username" placeholder="Nombre de Usuario" required>
+							    	<input type="text" class="form-control" ng-model="user.username" placeholder="Nombre de Usuario" required>
 							    </div>
 							    <div class="form-group">
-							    	 <input type="password" class="form-control" ng-model="password" placeholder="Contraseña" required>
+							    	 <input type="password" class="form-control" ng-model="user.password" placeholder="Contraseña" required>
 							    </div>
 							    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 							</form>
@@ -16,7 +16,7 @@
 							<p><a href=""> Nuevo usuario complejo</a></p>
 					</div>
                     Datos Ingresados:
-                  <p>{{username}} : {{password}}</p>
+                  <p>{{user.username}} : {{user.password}}</p>
 
 				</div>
 			</div>

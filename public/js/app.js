@@ -17,20 +17,20 @@ angular.module('footBookingApp', ['ui.router'])
                 url: '/signinComplejo',
                 views: {
                     'content': {
-                        templateUrl: 'templates/signin-complejo.html',
+                        templateUrl: 'login/signin-complejo.html',
                         controller: 'loginClubController'
-                    }
                 }
-            });
-        /*.state('singupComplejo', {
-            url: '/singupComplejo',
-            view: {
+                }
+            })
+        .state('signupComplejo', {
+            url: '/signupComplejo',
+            views: {
                 'content': {
-                    templateUrl: 'templates/singup-complejos.html',
+                    templateUrl: 'register/signup-complejo.html',
                     controller: 'registerClubController'
                 }                
             }
-        });*/
+        });
     
             $urlRouterProvider.otherwise('/');
 
