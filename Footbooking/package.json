@@ -1,0 +1,103 @@
+{
+  "name": "footbooking",
+  "version": "0.0.0",
+  "description": "Proyecto Final 2017 - UTN FRC - Footbooking: Gestión de reservas de canchas y torneos.",
+  "license": "MIT",
+  "angular-cli": {},
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "test": "ng test",
+    "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "e2e": "protractor"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^2.3.1",
+    "@angular/compiler": "^2.3.1",
+    "@angular/core": "^2.3.1",
+    "@angular/forms": "^2.3.1",
+    "@angular/http": "^2.3.1",
+    "@angular/platform-browser": "^2.3.1",
+    "@angular/platform-browser-dynamic": "^2.3.1",
+    "@angular/router": "^3.3.1",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.0.1",
+    "ts-helpers": "^1.1.1",
+    "zone.js": "^0.7.2",
+    "body-parser": "^1.17.2",
+    "connect": "^3.6.2",
+    "cookie-parser": "^1.4.3",
+    "crypto": "0.0.3",
+    "express": "^4.15.3",
+    "express-jwt": "^5.3.0",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.11.1",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^2.3.1",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "^6.0.42",
+    "angular-cli": "1.0.0-beta.28.3",
+    "codelyzer": "~2.0.0-beta.1",
+    "jasmine-core": "2.5.2",
+    "jasmine-spec-reporter": "2.5.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-remap-istanbul": "^0.2.1",
+    "protractor": "~4.0.13",
+    "ts-node": "1.2.1",
+    "tslint": "^4.3.0",
+    "typescript": "~2.0.3",
+    "nodemon": "^1.11.0"
+  },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwafoawua/Footbooking.git"
+  },
+  "keywords": [
+    "football",
+    "tesis",
+    "2017",
+    "footbooking",
+    "UTN",
+    "FRC",
+    "Cordoba",
+    "Argentina",
+    "Ingenieria",
+    "Sistemas",
+    "Informacion"
+  ],
+  "contributors": [
+    {
+      "name": "Afua Kwafo-Awua",
+      "email": "afua.kw@gmail.com"
+    },
+    {
+      "name": "Andrés Giacosa",
+      "email": "aagiacosa@gmail.com"
+    },
+    {
+      "name": "Antonella Morano",
+      "email": "antitomorano@gmail.com"
+    },
+    {
+      "name": "Pablo Tolaba",
+      "email": "pablotolaba91@gmail.com"
+    }
+  ],
+  "author": "Giacosa Andres, Kwafo Awua Afua, Morano Antonella, Tolaba Pablo",
+  "bugs": {
+    "url": "https://github.com/kwafoawua/Footbooking/issues"
+  },
+  "homepage": "https://github.com/kwafoawua/Footbooking#readme"
+}
