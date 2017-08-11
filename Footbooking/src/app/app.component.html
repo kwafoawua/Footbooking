@@ -2,6 +2,9 @@
 <h1>
   {{title}}
 </h1>
+<p *ngIf="user">Logged in as: {{user.username}}</p>
+  <p *ngIf="!user">Not logged in</p>
+  <router-outlet></router-outlet>
 <app-site-footer></app-site-footer>
 
 

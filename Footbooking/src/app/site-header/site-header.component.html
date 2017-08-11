@@ -18,10 +18,12 @@
 						<div class="col-sm-6">
 							<div class="user-section">			
 								<ul class="list-line">
-									<li><a href="signin.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a></li>
+									<li *ngIf="!user"><a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a></li>
 									<li><a href="signup.html"><i class="fa fa-user" aria-hidden="true"></i> Registrarse</a></li>
-								</ul>	
-								<a href="ad-post.html" class="btn btn-primary">Complejo</a>
+									<li *ngIf="user"><button (click)="logout()" class="btn btn-primary">Cerrar Sesión</button></li>
+								</ul>
+								<div id="clubLoginSection" *ngIf="!user"><a routerLink="/register-club" class="btn btn-primary">Registro Complejos</a></div>	
+								
 							</div><!-- user-section -->
 						</div>
 					</div>

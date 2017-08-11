@@ -1,0 +1,38 @@
+	<div class="ad-post-wrapper section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<div class="user-form">
+							<form (ngSubmit)="registerCub(club)">
+								<div>DATOS DEL COMPLEJO</div>
+								<div class="form-group">
+							    	<input type="text" class="form-control" name="name" required="required" placeholder="Nombre del complejo" [(ngModel)]="club.name">
+							    </div>
+							    <div class="form-group">
+							    	<input type="text" class="form-control" name="address" required="required" placeholder="Direccion" [(ngModel)]="club.address">
+							    </div>
+							    <div class="form-group">
+							    	<input type="email" class="form-control" name="email" required="required" placeholder="Email" [(ngModel)]="club.email">
+							    </div>
+								<div class="form-group">
+									<input type="number" class="form-control" name="phoneNumber"  placeholder="Telefono" [(ngModel)]="club.phoneNumber">
+								</div>
+							    <div>DATOS DEL USUARIO</div>
+								<div class="form-group">
+									<input type="text" class="form-control" name="username" required="required" placeholder="Nombre de Usuario" [(ngModel)]="club.username">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" required="required" placeholder="Contraseña"(ngModel)]="club.password">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" required="required" placeholder="Confirmar Contraseña">
+								</div>
+							    <button type="submit" class="btn btn-primary">Registrar Complejo</button>
+							    {{club.username}}
+							    {{message}}
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- ad-post -->

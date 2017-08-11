@@ -7,6 +7,9 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 var Club = require('../models/Club');
 var User = require('../models/User');
+var jwt = require('jsonwebtoken');
+var config = require('../config/database');
+var auth = require('../config/auth');
 
 /**
  * Create a Club
@@ -26,17 +29,26 @@ module.exports.addClub = function(req, res) {
     User.findOne({ $or: [{ 'username': req.body.username }, { 'email': req.body.email }] },
         function(err, user) {
             if (user) {
-                return res.json(null);
+                var content = {
+                    success: false,
+                    message: 'El usuario o cuenta de email ya estan en uso'
+                };
+                        return res.status(500).send(content);
             } else {
 
-                var newUser = new User({
+                /*var newUser = new User({
                     username: req.body.username.toLowerCase(),
                     email: req.body.email,
                     rol: 'Club',
-                    provider: 'local'
+                    password: ''
                 });
-
-                newUser.setPassword(req.body.password);
+                newUser.setPassword(req.body.password);*/
+                
+                var newUser = new User();
+                newUser.username = req.body.username.toLowerCase();
+                newUser.email = req.body.email;
+                newUser.rol = 'Club';
+                newUser.password = newUser.setPassword(req.body.password);
 
                 var newClub = new Club({
                     name: req.body.name,
@@ -58,12 +70,20 @@ module.exports.addClub = function(req, res) {
                         if (err) {
                             return res.status(500).send(err);
                         }
-                        var token;
-                        token = newUser.generateJwt();
-                        res.status(200).json({"token": token});
+                        var token = newUser.sign(newUser, config.secret, {
+              expiresIn : 60*60*24
+            });
+                        var content = {
+                            user : newUser,
+                            success: true,
+                            message: 'Se ha creado un nuevo Complejo',
+                            token: token
+                        };
+                        console.log('Se ha guardado el complejo');
+                        return res.status(200).json(content);
                     });
 
-                    console.log('Se ha guardado el complejo');
+                    
                 });
             }
 

@@ -1,0 +1,22 @@
+		<div class="ad-post-wrapper section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<div class="user-form">
+							<form name="loginComplejo" (ngSubmit)="loginUser(user)">
+							    <div class="form-group">
+							    	<input type="text" class="form-control" [(ngModel)]="user.username" placeholder="Nombre de Usuario" required>
+							    </div>
+							    <div class="form-group">
+							    	 <input type="password" class="form-control" [(ngModel)]="user.password"placeholder="Contraseña" required>
+							    </div>
+							    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+							</form>
+						</div>
+							
+					</div>
+                   <p *ngIf="message">{{message}}</p>
+
+				</div>
+			</div>
+		</div> <!-- ad-post -->
