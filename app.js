@@ -44,7 +44,9 @@ mongoose.connect(configDB.url, function(error) {
 //HANDLERS
 
 /*Registro*/
-/*app.post('/newRegister', (req, res) => {
+var User = require ("./server/models/User"),
+    Player = require("./server/models/Player");
+app.post('/newRegister', (req, res) => {
     console.log(req.body);
 
     var newUser = new User({
@@ -70,4 +72,4 @@ mongoose.connect(configDB.url, function(error) {
   	});
 
   	res.redirect('/');
-});*/
+});
