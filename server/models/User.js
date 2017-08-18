@@ -18,7 +18,7 @@ var secret='footbookingsecretcode';
 
 var userSchema = new Schema({
     username: { type: String, unique: true, required: true, index: true, lowercase: true },
-    //password: { type: String, required: true },
+    password: { type: String, required: true },
     hash: String,
     //In cryptography, a salt is random data that is used as an additional input to a one-way function that "hashes" a password or passphrase.
     salt: String,

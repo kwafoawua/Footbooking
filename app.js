@@ -46,8 +46,6 @@ mongoose.connect(configDB.url, function(error) {
 });
 
 
-
-
 //HANDLERS
 
 var User = require ("./server/models/User"),
@@ -86,6 +84,10 @@ app.post('/newRegister', (req, res) => {
 app.post('/signin', function(req, res){
     User.findOne({username:req.body.username, password:req.body.password},
         function(err, docs){
-            res.send("Se encontro el usuario");
+            if (docs) {
+                res.send("Se encontro el usuario");
+            } else {
+            res.send("No se encontro el usuario");
+            }
         });
 });
