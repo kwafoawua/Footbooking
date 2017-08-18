@@ -1,3 +1,4 @@
 module.exports = {
-	url: 'mongodb://footbooking:footbooking01@ds119302.mlab.com:19302/footbooking-db'
+	//url: 'mongodb://footbooking:footbooking01@ds119302.mlab.com:19302/footbooking-db'
+	url: 'mongodb://localhost/test'
 }

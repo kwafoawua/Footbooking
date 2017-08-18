@@ -18,12 +18,19 @@ var configDB = require('./server/config/database');
 
 var routesApi = require('./server/routes/index');
 
+var session = require('express-session');
+
 //Require Controllers
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
+app.use(session({
+    secret: "123byunhbsdah12ub",
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use('/', routesApi);
 
@@ -43,9 +50,10 @@ mongoose.connect(configDB.url, function(error) {
 
 //HANDLERS
 
-/*Registro*/
 var User = require ("./server/models/User"),
     Player = require("./server/models/Player");
+
+/*Registro*/
 app.post('/newRegister', (req, res) => {
     console.log(req.body);
 
@@ -72,4 +80,12 @@ app.post('/newRegister', (req, res) => {
   	});
 
   	res.redirect('/');
+});
+
+/*Login*/
+app.post('/signin', function(req, res){
+    User.findOne({username:req.body.username, password:req.body.password},
+        function(err, docs){
+            res.send("Se encontro el usuario");
+        });
 });
